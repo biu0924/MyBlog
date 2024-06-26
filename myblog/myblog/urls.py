@@ -15,8 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.shortcuts import redirect# 重定向
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    # path('', lambda request: redirect('home/', permanent=True)),  # 首页重定向到home
+    path('', include('blog.urls')),
+    path('login/', include('blog.urls')),
+    path('register/', include('blog.urls')),
+    path('home/', include('blog.urls')),
+
 ]

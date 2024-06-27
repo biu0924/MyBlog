@@ -22,8 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # path('', lambda request: redirect('home/', permanent=True)),  # 首页重定向到home
     path('', include('blog.urls')),
-    path('login/', include('blog.urls')),
-    path('register/', include('blog.urls')),
-    path('home/', include('blog.urls')),
+    # path('home/', include('blog.urls')),
 
 ]

@@ -32,12 +32,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 以上自带的，下面是自己的
-    'blog',
+    'blog.apps.BlogConfig',
 ]
 
-# 告诉Django使用你自定义的用户模型
+# # 告诉Django使用你自定义的用户模型
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
+# 设置会话引擎为Cookie
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # MIDDLEWARE: 中间件列表。中间件是在请求和响应过程中执行的钩子
 MIDDLEWARE = [
@@ -48,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 以上是自带的
+    'blog.middleware.DefaultLoginMiddleware',
 ]
 
 # ROOT_URLCONF: 根URL配置模块的路径。通常是项目目录下的 urls.py 文件。
@@ -57,7 +61,7 @@ ROOT_URLCONF = 'myblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'blog'/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

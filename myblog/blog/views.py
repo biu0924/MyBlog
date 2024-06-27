@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # 首页
 def home_view(request):
-    return render(request, 'blog/home.html')
+    return render(request, 'home.html')
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

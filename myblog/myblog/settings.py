@@ -35,7 +35,15 @@ INSTALLED_APPS = [
     # 以上自带的，下面是自己的
     'blog.apps.BlogConfig',
 ]
-
+'''
+python manage.py migrate
+    这个 migrate 命令查看 INSTALLED_APPS 配置，
+    并根据 mysite/settings.py 文件中的数据库配置和随应用提供的数据库迁移文件（我们将在后面介绍这些），
+    创建任何必要的数据库表。你会看到它应用的每一个迁移都有一个消息。如果你有兴趣，
+    运行你的数据库的命令行客户端，
+    输入 \dt （PostgreSQL）， SHOW TABLES; （MariaDB，MySQL）， .tables （SQLite）
+    或 SELECT TABLE_NAME FROM USER_TABLES; （Oracle）来显示 Django 创建的表。
+'''
 # # 告诉Django使用你自定义的用户模型
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
@@ -144,4 +152,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media')

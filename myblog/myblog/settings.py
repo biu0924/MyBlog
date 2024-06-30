@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,12 +26,12 @@ ALLOWED_HOSTS = []
 # INSTALLED_APPS: 已安装的Django应用程序列表。
 # 包括Django自带的应用和你自己创建的应用。
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.admin',# 管理员站点
+    'django.contrib.auth',# 认证授权系统
+    'django.contrib.contenttypes',# 内容类型框架
+    'django.contrib.sessions',# 会话框架
+    'django.contrib.messages',# 消息框架
+    'django.contrib.staticfiles',# 管理静态文件框架
     # 以上自带的，下面是自己的
     'blog.apps.BlogConfig',
 ]
@@ -133,7 +134,14 @@ USE_TZ = True
 # STATIC_URL: 静态文件的URL。
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR /"static",
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 # DEFAULT_AUTO_FIELD: 默认的自动字段类型，通常是 BigAutoField
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
